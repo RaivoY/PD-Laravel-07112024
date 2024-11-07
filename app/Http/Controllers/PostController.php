@@ -29,6 +29,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = [
             'title' => $request->title,
             'content' => $request->content
@@ -37,6 +38,7 @@ class PostController extends Controller
         Post::create($data);
 
         return redirect('/posts');
+
     }
 
     /**
@@ -44,9 +46,9 @@ class PostController extends Controller
      */
     public function show()
     {
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $_POST]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -81,5 +83,5 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect('/posts');
-    }    
+    }
 }
